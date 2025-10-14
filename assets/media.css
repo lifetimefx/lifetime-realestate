@@ -1,0 +1,43 @@
+@media (max-width: 750px) {
+  ul {
+    display: none;
+  }
+
+  .logo {
+    width: 90%;
+  }
+
+  .buttons {
+    display: none;
+  }
+
+  .menutoggler {
+    display: block;
+  }
+
+  section#home {
+    display: block;
+    margin-top: 18%;
+  }
+
+  section#home .col {
+    width: 100%;
+    height: auto;
+  }
+
+  section#home .col:nth-child(2) {
+    display: none;
+  }
+
+  section#about {
+    display: block;
+    margin-top: 18%;
+  }
+  section#about .col:nth-child(1) {
+    width: 100%;
+  }
+
+  section#about .col:nth-child(2) {
+    width: 100%;
+  }
+}
