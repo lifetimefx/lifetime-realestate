@@ -59,3 +59,17 @@ class Database{
     }
 
 }
+
+// session configuration 
+// session starts if not already started
+if(session_status() === PHP_SESSION_NONE){
+    session_start();
+}
+
+// helper function to check if user is logged in
+// returns boolean value of true if user is logged in and false if user is not
+function loggedIn(){
+    return isset($_SESSION['user_id']);
+
+}
+
