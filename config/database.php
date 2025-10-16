@@ -73,3 +73,9 @@ function loggedIn(){
 
 }
 
+// helper function to check if user is admin
+// returns boolean true is user is admin and false otherwise
+function isAdmin(){
+    return isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
+}
+
