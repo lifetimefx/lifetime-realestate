@@ -16,3 +16,44 @@ define('BASE_URL', 'http://localhost/lifetime-realestate');
 // File upload settings
 define('UPLOAD_DIR', 'assets/uploads/properties');
 define('MAX_FILE_SIZE', 5242880); // 5MB maximum size
+
+
+// Database Connection Class using PDO
+
+class Database{
+    // private property to store database connection
+    private static $connection = null;
+
+    // Get database connnection
+
+    public static function getConnection(){
+        // check if connection already exists
+
+        if(self::$connection === null){
+            try {
+                self::$connection = new PDO(
+                    "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8mb4", DB_USER, DB_PASS, [
+                        // set error mode to exception for better error handling
+                        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                        // fetch results as associative array as default
+                        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                        // disable emulated prepared statements for better security
+                        PDO::ATTR_EMULATE_PREPARES => false
+                    ]
+                    );
+            } catch (PDOException $e) {
+                // if connection fails display error message
+                die("Connection failed: " . $e->getMessage());
+            }
+        }
+
+        // return the database connection
+
+        return self::$connection;
+    }
+
+    
+
+
+
+}
