@@ -79,3 +79,7 @@ function isAdmin(){
     return isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
 }
 
+// helper function to redirect 
+function redirect($url){
+    return header("Location: " . BASE_URL . $url);
+}
