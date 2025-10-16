@@ -82,4 +82,12 @@ function isAdmin(){
 // helper function to redirect 
 function redirect($url){
     return header("Location: " . BASE_URL . $url);
+    exit();
+}
+
+// sanitize inputs to prevent XSS attacks
+// @param string $data input data to sanitize
+
+function sanitize($data){
+    return htmlspecialchars(strip_tags(trim($data)));
 }
