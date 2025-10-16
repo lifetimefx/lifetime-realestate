@@ -52,8 +52,10 @@ class Database{
         return self::$connection;
     }
 
-    
+    // close database connection
+    public static function closeConnection(){
+        self::$connection = null;
 
-
+    }
 
 }
