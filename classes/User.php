@@ -108,4 +108,13 @@ class User
            return false;
         }
     }
+
+    // logout user
+    public function logout(){
+        // destroy all session data
+        session_unset();
+        session_destroy();
+        return true;
+        
+    }
 }
