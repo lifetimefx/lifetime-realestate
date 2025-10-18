@@ -184,4 +184,17 @@ class User
             return false;
         }
     }
+
+    // delete user
+    public function delete($id){
+        try {
+            $query = "DELETE FROM users WHERE id = :id";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            return $stmt->execute();
+        } catch (PDOException $th) {
+            error_log('Delete user error: '. $th->getMessage());
+            return false;
+        }
+    }
 }
