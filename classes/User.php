@@ -115,6 +115,21 @@ class User
         session_unset();
         session_destroy();
         return true;
-        
+
+    }
+
+
+    public function getById($id){
+        try {
+            $query = "SELECT id, username, email, full_name, phone, role, created_at FROM users WHERE id = :id";
+            $stmt = $this->conn->prepare($query);
+
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+            return $stmt->fetch();
+        } catch (PDOException $th) {
+           error_log("Get user error: " . $th->getMessage());
+           return false;
+        }
     }
 }
