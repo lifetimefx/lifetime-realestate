@@ -212,4 +212,18 @@ class User
             return false;
         }
     }
+
+    // count total users
+    public function total(){
+        try {
+            $query = "SELECT COUNT(*) as total FROM users";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            $result = $stmt->fetch();
+            return $result['total'];
+        } catch (PDOException $th) {
+            error_log("Count users error: " . $th->getMessage());
+            return 0;
+        }
+    }
 }
