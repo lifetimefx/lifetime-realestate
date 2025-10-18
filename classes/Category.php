@@ -72,4 +72,19 @@ class Category
             return false;
         }
     }
+
+    // delete category
+
+    public function deleteCategory($id){
+        try {
+            $query = "DELETE FROM categories WHERE id = :id";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            return $stmt->execute();
+
+        } catch (PDOException $th) {
+            error_log('Delete category error: ' . $th->getMessage());
+            return false;
+        }
+    }
 }
