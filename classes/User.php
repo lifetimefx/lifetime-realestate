@@ -197,4 +197,19 @@ class User
             return false;
         }
     }
+
+    // change user role (only Admin can)
+
+    public function changeRole($id, $role){
+        try {
+            $query = "UPDATE users SET role = :role WHERE id = :id";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->bindParam(':role', $role);
+            return $stmt->execute();
+        } catch (PDOException $th) {
+            error_log("Change role error: ", $th->getMessage());
+            return false;
+        }
+    }
 }
