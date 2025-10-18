@@ -21,6 +21,18 @@ class User{
                 error_log('Username check error: ' . $th->getMessage());
                 return false;
             }
+        }// check if username of email already exists 
+        private function EmailExists($email){
+            try {
+                $query = "SELECT id FROM users WHERE email = :email";
+                $stmt = $this->conn->prepare($query);
+                $stmt->bindParam(':email', $email);
+                $stmt->execute();
+                return $stmt->rowCount() > 0;
+            } catch (PDOException $th) {
+                error_log('Username check error: ' . $th->getMessage());
+                return false;
+            }
         }
 
 }
