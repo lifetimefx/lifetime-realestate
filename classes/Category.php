@@ -55,4 +55,21 @@ class Category
             return false;
         }
     }
+
+    // update category
+    public function updateCategory($id, $data){
+        try {
+            $query = "UPDATE categories SET name = :name, description = :description, icon = :icon WHERE id = :id";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':name', $data['name']);
+            $stmt->bindParam(':description', $data['description']);
+            $stmt->bindParam(':icon', $data['icon']);
+            return $stmt->execute();
+
+        } catch (PDOException $th) {
+            error_log("Update category error: " . $th->getMessage());
+            return false;
+        }
+    }
 }
