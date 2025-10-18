@@ -132,4 +132,21 @@ class User
            return false;
         }
     }
+
+    // get all users
+    public function getAll($limit = 50, $offset = 0){
+        try {
+            $query = "SELECT id, username, email, full_name, phone, role, created_at FROM users ORDER BY created_at DESC LIMIT :limit OFFSET :offset";
+
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+            $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetchAll();
+
+        } catch (PDOException $th) {
+            error_log("Get users error: " . $th->getMessage());
+            return [];
+        }
+    }
 }
