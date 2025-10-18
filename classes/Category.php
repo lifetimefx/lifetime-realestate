@@ -23,4 +23,18 @@ class Category{
             return [];
         }
     }
+
+    // get category by ID
+    public function getById($id){
+        try {
+            $query = "SELECT * FROM categories WHERE id = :id";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch();
+        } catch (PDOException $th) {
+            error_log("Get category by id error: " . $th->getMessage());
+            return false;
+        }
+    }
 }
