@@ -76,4 +76,36 @@ class User
             return false;
         }
     }
+
+    // Login user
+
+    public function login($username, $password){
+        try {
+            // allow login with username or email
+            $query = "SELECT * FROM users WHERE username = :username OR email = :username LIMIT 1"; // so here anything the user inputs, it will check if it matches the username or the email in the database
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':username', $username);
+            $stmt->execute();
+
+            $user = $stmt->fetch();
+
+            // verify password
+            if ($user && password_verify($password, $user['password'])) {
+                // start session and store user data
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['username'] = $user['username'];
+                $_SESSION['email'] = $user['email'];
+                $_SESSION['role'] = $user['role'];
+                $_SESSION['full_name'] = $user['full_name'];
+
+                return $user;
+            } 
+            return false;
+
+
+        } catch (PDOException $th) {
+           error_log("User login error: " . $th->getMessage());
+           return false;
+        }
+    }
 }
