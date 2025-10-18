@@ -1,18 +1,19 @@
-<?php 
+<?php
 
 require_once __DIR__ . '/../config/database.php';
 
-class Category{
+class Category
+{
     private $conn;
 
     private function __construct()
     {
         $this->conn = Database::getConnection();
-
     }
 
     // get all categories
-    public function getAll(){
+    public function getAll()
+    {
         try {
             $query = "SELECT * FROM categories ORDER by name ASC";
             $stmt = $this->conn->prepare($query);
@@ -25,7 +26,8 @@ class Category{
     }
 
     // get category by ID
-    public function getById($id){
+    public function getById($id)
+    {
         try {
             $query = "SELECT * FROM categories WHERE id = :id";
             $stmt = $this->conn->prepare($query);
@@ -34,6 +36,22 @@ class Category{
             return $stmt->fetch();
         } catch (PDOException $th) {
             error_log("Get category by id error: " . $th->getMessage());
+            return false;
+        }
+    }
+
+    // Create a new Category
+    public function createCategory($data)
+    {
+        try {
+            $query = "INSERT INTO categories (name, description, icon) VALUES (:name, :description, :icon)";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':name', $data['name']);
+            $stmt->bindParam(':description', $data['description']);
+            $stmt->bindParam(':icon', $data['icon']);
+            return $stmt->execute();
+        } catch (PDOException $th) {
+            error_log("Create new category error: " . $th->getMessage());
             return false;
         }
     }
