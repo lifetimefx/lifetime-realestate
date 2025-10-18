@@ -149,4 +149,39 @@ class User
             return [];
         }
     }
+
+    // update user profile
+
+    public function update($id, $data){
+        try {
+            $query = "UPDATE users SET full_name = :full_name, email = :email, phone = :phone ";
+
+            // only update password if provided
+            if(!empty($data['password'])){
+                // if password is fille or present for updating, then add it to the query to update.
+                $query .= ", password = :passoword";
+            }
+
+            $query .= " WHERE id = :id";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':full_name', $data['full_name']);
+            $stmt->bindParam(':email', $data['email']);
+            $stmt->bindParam(':phone', $data['phone']);
+
+            if (!empty($data['password'])) {
+                $hashedPassword = password_hash($data['password'], PASSWORD_DEFAULT);
+                $stmt->bindParam(':password', $hashedPassword);
+            }
+
+            return $stmt->execute();
+
+            
+
+
+        } catch (PDOException $th) {
+            error_log("Update user error: " . $th->getMessage());
+            return false;
+        }
+    }
 }
