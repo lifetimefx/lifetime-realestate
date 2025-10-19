@@ -1,0 +1,1144 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  @import url(https://fonts.googleapis.com/css?family=Nunito:200,300,regular,500,600,700,800,900,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+
+  font-family: Nunito;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  width: 100%;
+  height: 10vh;
+  border: 0px solid red;
+  display: flex;
+  justify-content: center;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
+  position: fixed;
+  background: transparent;
+  backdrop-filter: blur(1rem);
+}
+
+nav {
+  width: 80%;
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+.logo {
+  width: 10%;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+  width: 40%;
+  /* justify-content: space-evenly; */
+  /* border: 2px solid black; */
+}
+
+ul li {
+  padding-right: 1rem;
+}
+ul li a {
+  color: black;
+}
+
+.buttons {
+  width: 40%;
+  display: flex;
+  justify-content: end;
+}
+
+a {
+  text-decoration: none;
+}
+
+.buttons a {
+  background: red;
+  padding: 0.5rem 1.3rem 0.5rem 1.3rem;
+  margin-right: 1rem;
+  color: white;
+  border-radius: 1.3rem;
+}
+
+.menutoggler {
+  display: none;
+}
+
+section#home {
+  margin-top: 12%;
+  width: 80%;
+  height: auto;
+  /* border: 3px solid black; */
+  display: flex;
+}
+
+section#home .col {
+  width: 50%;
+  height: 500px;
+  /* border: 2px solid green; */
+}
+
+section#home .col:nth-child(2) {
+  background: url(../img/1.jpg);
+  background-size: cover;
+  animation: bgImage 10s linear infinite;
+}
+
+section#home .col:nth-child(1) h1 {
+  font-size: 2.5rem;
+  padding: 1rem;
+  background: linear-gradient(red, black, red);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+section#home .col:nth-child(1) h3 {
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: 300;
+  padding: 1rem;
+}
+
+.homebutton {
+  padding: 1rem;
+}
+
+.homebutton a {
+  background: red;
+  padding: 0.5rem 1.3rem 0.5rem 1.3rem;
+  margin-right: 0.7rem;
+  color: white;
+  border-radius: 1.3rem;
+}
+
+.homebutton a:nth-child(2) {
+  background: white;
+  border: 1px solid red;
+  padding: 0.5rem 1.3rem 0.5rem 1.3rem;
+  margin-right: 0.7rem;
+  color: red;
+  border-radius: 1.3rem;
+}
+
+@keyframes bgImage {
+  0% {
+    background: url(../img/1.jpg);
+    background-size: cover;
+  }
+
+  25% {
+    background: url(../img/2.jpg);
+    background-size: cover;
+  }
+  50% {
+    background: url(../img/3.jpg);
+
+    background-size: cover;
+  }
+  75% {
+    background: url(../img/4.jpg);
+    background-size: cover;
+  }
+}
+
+section#about {
+  margin-top: 12%;
+  width: 80%;
+  height: auto;
+  /* border: 3px solid black; */
+  display: flex;
+  box-shadow: 2px 4px 10px rgba(0,0,0,0.4);
+}
+
+section#about .col:nth-child(1) {
+  background: url(../img/me.jpg);
+  background-size: cover;
+  width: 50%;
+  height: 500px;
+}
+
+section#about .col:nth-child(2) {
+  width: 50%;
+  padding: 1rem;
+}
+
+section#about .col:nth-child(2) h1 {
+ 
+  background: linear-gradient(red, black);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+section#about .col:nth-child(2) p {
+ 
+  color: rgba(0, 0, 0, 0.7);
+}
+
+section#about .col:nth-child(2) .media {
+ margin-top: 1rem;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+section#about .col:nth-child(2) .media a{
+  font-size: 1.5rem;
+}
+
+
+
+section#pricing{
+  margin-top: 12%;
+  width: 80%;
+  height: auto;
+  /* border: 3px solid black; */
+  display: flex;
+  justify-content: space-evenly;
+  box-shadow: 2px 4px 10px rgba(0,0,0,0.4);
+}
+
+
+
+section#pricing .col{
+  width: 30%;
+  height: 400px;
+  border: 2px solid red;
+}
+
+section#pricing .col p{
+font-size: 2rem;
+}
+
+section#pricing .col .priceimage{
+  width: 100%;
+  height: 50%;
+ background: url(../img/1.jpg);
+ background-size: cover;
+}
+
+section#pricing .col .buttons{
+  width: 50%;
+ display: flex;
+ justify-content: space-evenly;
+}
+
+
+
+
+
+/**
+ * LIFETIME Real Estate - Main Stylesheet
+ * 
+ * This file contains all styles for the real estate website
+ * Organized by sections for easy maintenance
+ */
+
+/* ========================================
+   1. GLOBAL STYLES & RESET
+   ======================================== */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Nunito', sans-serif;
+}
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css?family=Nunito:200,300,regular,500,600,700,800,900,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic');
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Body: Full width, centered content */
+body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f8f9fa;
+}
+
+/* Remove default link underline */
+a {
+  text-decoration: none;
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+/* ========================================
+   2. HEADER & NAVIGATION
+   ======================================== */
+
+header {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+  position: fixed; /* Fixed to top */
+  top: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px); /* Blur effect for modern look */
+  z-index: 1000; /* Ensure header stays on top */
+  transition: all 0.3s ease;
+}
+
+/* Add more shadow when scrolling */
+header.scrolled {
+  box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+nav {
+  width: 80%;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo/Brand */
+.logo {
+  font-size: 1.8rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #ff0000, #8b0000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  cursor: pointer;
+}
+
+/* Navigation Menu */
+ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem; /* Space between menu items */
+}
+
+ul li a {
+  color: #333;
+  font-weight: 500;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+/* Hover effect: Underline animation */
+ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #ff0000;
+  transition: width 0.3s ease;
+}
+
+ul li a:hover::after {
+  width: 100%;
+}
+
+/* Authentication Buttons */
+.buttons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.buttons a {
+  background: linear-gradient(135deg, #ff0000, #cc0000);
+  padding: 0.6rem 1.5rem;
+  color: white;
+  border-radius: 25px;
+  font-weight: 600;
+  box-shadow: 0 4px 6px rgba(255, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.buttons a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(255, 0, 0, 0.3);
+}
+
+/* Mobile Menu Toggle (hidden by default) */
+.menutoggler {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+}
+
+/* ========================================
+   3. HOME/HERO SECTION
+   ======================================== */
+
+section#home {
+  margin-top: 12%;
+  width: 80%;
+  min-height: 500px;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+section#home .col {
+  width: 50%;
+  height: 500px;
+}
+
+/* Hero text content */
+section#home .col:nth-child(1) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+section#home .col:nth-child(1) h1 {
+  font-size: 2.8rem;
+  padding: 1rem 1rem 1rem 0;
+  background: linear-gradient(135deg, #ff0000, #000000, #ff0000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.2;
+}
+
+section#home .col:nth-child(1) h3 {
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 400;
+  padding: 1rem 1rem 1rem 0;
+  line-height: 1.6;
+}
+
+/* Hero image with animation */
+section#home .col:nth-child(2) {
+  background: url(../../img/1.jpg);
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  animation: bgImage 20s ease-in-out infinite;
+}
+
+/* Hero buttons */
+.homebutton {
+  padding: 1rem 1rem 1rem 0;
+  display: flex;
+  gap: 1rem;
+}
+
+.homebutton a {
+  background: linear-gradient(135deg, #ff0000, #cc0000);
+  padding: 0.8rem 2rem;
+  color: white;
+  border-radius: 25px;
+  font-weight: 600;
+  box-shadow: 0 4px 8px rgba(255, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.homebutton a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(255, 0, 0, 0.4);
+}
+
+.homebutton a:nth-child(2) {
+  background: white;
+  border: 2px solid #ff0000;
+  color: #ff0000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.homebutton a:nth-child(2):hover {
+  background: #ff0000;
+  color: white;
+}
+
+/* Background image slideshow animation */
+@keyframes bgImage {
+  0%, 100% {
+    background-image: url(../../img/1.jpg);
+  }
+  25% {
+    background-image: url(../../img/2.jpg);
+  }
+  50% {
+    background-image: url(../../img/3.jpg);
+  }
+  75% {
+    background-image: url(../../img/4.jpg);
+  }
+}
+
+/* ========================================
+   4. ABOUT SECTION
+   ======================================== */
+
+section#about {
+  margin-top: 8%;
+  width: 80%;
+  min-height: 500px;
+  display: flex;
+  gap: 2rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  background: white;
+}
+
+section#about .col:nth-child(1) {
+  background: url(../../img/me.jpg);
+  background-size: cover;
+  background-position: center;
+  width: 45%;
+  min-height: 500px;
+}
+
+section#about .col:nth-child(2) {
+  width: 55%;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+section#about .col:nth-child(2) h1 {
+  background: linear-gradient(135deg, #ff0000, #000000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+}
+
+section#about .col:nth-child(2) p {
+  color: rgba(0, 0, 0, 0.7);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+/* Social media links */
+section#about .col:nth-child(2) .media {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+}
+
+section#about .col:nth-child(2) .media a {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fa;
+  border-radius: 50%;
+  color: #333;
+  font-size: 1.3rem;
+  transition: all 0.3s ease;
+}
+
+section#about .col:nth-child(2) .media a:hover {
+  background: #ff0000;
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* ========================================
+   5. FEATURES SECTION
+   ======================================== */
+
+section#features {
+  margin-top: 8%;
+  width: 80%;
+  padding: 3rem 0;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  background: linear-gradient(135deg, #ff0000, #000000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.feature-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.feature-card i {
+  font-size: 3rem;
+  color: #ff0000;
+  margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.feature-card p {
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 1.6;
+}
+
+/* ========================================
+   6. SEARCH SECTION
+   ======================================== */
+
+section#search {
+  margin-top: 8%;
+  width: 80%;
+  padding: 3rem;
+  background: linear-gradient(135deg, #ff0000, #cc0000);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(255, 0, 0, 0.3);
+}
+
+section#search .section-title {
+  color: white;
+  -webkit-text-fill-color: white;
+  margin-bottom: 2rem;
+}
+
+.search-container {
+  width: 100%;
+}
+
+.search-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  align-items: center;
+}
+
+.form-group {
+  display: flex;
+}
+
+.search-input,
+.search-select {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  background: white;
+  color: #333;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus,
+.search-select:focus {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+}
+
+.search-btn {
+  padding: 1rem 2rem;
+  background: white;
+  color: #ff0000;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.search-btn:hover {
+  background: #333;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   7. CATEGORIES SECTION
+   ======================================== */
+
+section#categories {
+  margin-top: 8%;
+  width: 80%;
+  padding: 3rem 0;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.category-card {
+  background: white;
+  padding: 2.5rem 2rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.category-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(255, 0, 0, 0.2);
+  border-color: #ff0000;
+}
+
+.category-card i {
+  font-size: 3.5rem;
+  color: #ff0000;
+  margin-bottom: 1rem;
+}
+
+.category-card h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.category-card p {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 0.95rem;
+}
+
+/* ========================================
+   8. PROPERTIES/PRICING SECTION
+   ======================================== */
+
+section#pricing {
+  margin-top: 8%;
+  width: 80%;
+  padding: 3rem 0;
+}
+
+.properties-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.property-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  height: auto;
+  width: 100%;
+}
+
+.property-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Property image */
+.priceimage {
+  width: 100%;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+/* Property type badge */
+.property-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.95);
+  color: #333;
+}
+
+.property-badge.sale {
+  background: rgba(40, 167, 69, 0.95);
+  color: white;
+}
+
+.property-badge.rent {
+  background: rgba(0, 123, 255, 0.95);
+  color: white;
+}
+
+/* Property content */
+.property-content {
+  padding: 1.5rem;
+}
+
+.property-content h3 {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 0.8rem;
+  line-height: 1.3;
+}
+
+.property-content .category,
+.property-content .location {
+  font-size: 0.9rem;
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.property-content .category i,
+.property-content .location i {
+  color: #ff0000;
+}
+
+/* Property features */
+.property-features {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+
+.property-features span {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.9rem;
+  color: rgba(0, 0, 0, 0.7);
+  background: #f8f9fa;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+}
+
+.property-features i {
+  color: #ff0000;
+}
+
+/* Property price */
+.property-content .price {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #ff0000;
+  margin: 1rem 0;
+}
+
+/* Property description */
+.details {
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+/* Property action buttons */
+.property-content .buttons {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.btn-view {
+  flex: 1;
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(135deg, #ff0000, #cc0000);
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-view:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+}
+
+.btn-favorite {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fa;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  color: #ff0000;
+  transition: all 0.3s ease;
+}
+
+.btn-favorite:hover {
+  background: #ff0000;
+  color: white;
+  transform: scale(1.1);
+}
+
+/* No properties message */
+.no-properties {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.no-properties i {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+/* View all button */
+.view-all {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.btn-primary {
+  padding: 1rem 3rem;
+  background: linear-gradient(135deg, #ff0000, #cc0000);
+  color: white;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 0, 0, 0.4);
+}
+
+/* ========================================
+   9. TESTIMONIALS SECTION
+   ======================================== */
+
+section#testimonials {
+  margin-top: 8%;
+  width: 80%;
+  padding: 3rem 0;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.testimonial-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.stars {
+  color: #ffc107;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.testimonial-card p {
+  color: rgba(0, 0, 0, 0.7);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.testimonial-card h4 {
+  color: #333;
+  font-weight: 700;
+}
+
+/* ========================================
+   10. FOOTER
+   ======================================== */
+
+footer {
+  width: 100%;
+  background: #1a1a1a;
+  color: white;
+  margin-top: 8%;
+  padding: 3rem 0 0;
+}
+
+.footer-content {
+  width: 80%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding-bottom: 2rem;
+}
+
+.footer-col h3 {
+  margin-bottom: 1rem;
+  color: #ff0000;
+  font-size: 1.3rem;
+}
+
+.footer-col p {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.8;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-col ul li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-col ul li a {
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+  color: #ff0000;
+  padding-left: 5px;
+}
+
+.footer-col ul li i {
+  margin-right: 0.5rem;
+  color: #ff0000;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.social-links a {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: white;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  background: #ff0000;
+  transform: translateY(-3px);
+}
+
+.footer-bottom {
+  width: 100%;
+  text-align: center;
+  padding: 1.5rem 0;
+  background: #111;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom p {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* ========================================
+   11. ANIMATIONS
+   ======================================== */
+
+/* Fade in animation for elements */
+.fade-in {
+  animation: fadeIn 0.6s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   12. NOTIFICATION SYSTEM
+   ======================================== */
+
+.notification {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  opacity: 0;
+  transform: translateX(400px);
+  transition: all 0.3s ease;
+}
+
+.notification.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.notification-success {
+  background: #28a745;
+  color: white;
+}
+
+.notification-error {
+  background: #dc3545;
+  color: white;
+}
+
+.notification-info {
+  background: #17a2b8;
+  color: white;
+}
+
+.notification-warning {
+  background: #ffc107;
+  color: #333;
+}

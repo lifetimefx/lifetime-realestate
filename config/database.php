@@ -10,7 +10,7 @@ define('DB_USER', 'root');
 define('DB_PASS', '');
 
 // Base URL
-define('BASE_URL', 'http://localhost/lifetime-realestate');
+define('BASE_URL', 'http://localhost/lifetime-realestate/');
 
 
 // File upload settings
@@ -68,7 +68,7 @@ if(session_status() === PHP_SESSION_NONE){
 
 // helper function to check if user is logged in
 // returns boolean value of true if user is logged in and false if user is not
-function loggedIn(){
+function isLoggedIn(){
     return isset($_SESSION['user_id']);
 
 }

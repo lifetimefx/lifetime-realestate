@@ -24,7 +24,7 @@ class User
             return false;
         }
     } // check if username of email already exists 
-    private function EmailExists($email)
+    private function emailExists($email)
     {
         try {
             $query = "SELECT id FROM users WHERE email = :email";
@@ -79,47 +79,57 @@ class User
 
     // Login user
 
-    public function login($username, $password){
+    public function login($username, $password)
+    {
         try {
-            // allow login with username or email
-            $query = "SELECT * FROM users WHERE username = :username OR email = :username LIMIT 1"; // so here anything the user inputs, it will check if it matches the username or the email in the database
+            $query = "SELECT id, username, email, password, role, full_name 
+                  FROM users 
+                  WHERE LOWER(username) = LOWER(:username) 
+OR LOWER(email) = LOWER(:email) LIMIT 1";
             $stmt = $this->conn->prepare($query);
             $stmt->bindParam(':username', $username);
+            $stmt->bindParam(':email', $username);
+
             $stmt->execute();
 
-            $user = $stmt->fetch();
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            // verify password
+            // DEBUGGING OUTPUT
+            $this->debug_log("User fetched: ");
+            $this->debug_log($user);
+
             if ($user && password_verify($password, $user['password'])) {
-                // start session and store user data
+                session_regenerate_id(true);
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['email'] = $user['email'];
                 $_SESSION['role'] = $user['role'];
                 $_SESSION['full_name'] = $user['full_name'];
-
                 return $user;
-            } 
+            } else {
+                $this->debug_log("Password verification failed.");
+            }
             return false;
-
-
         } catch (PDOException $th) {
-           error_log("User login error: " . $th->getMessage());
-           return false;
+            error_log("User login error: " . $th->getMessage());
+            $this->debug_log("Login exception: " . $th->getMessage());
+            $_SESSION['error'] = 'A database error occurred. Please try again later.';
+            return false;
         }
     }
 
     // logout user
-    public function logout(){
+    public function logout()
+    {
         // destroy all session data
         session_unset();
         session_destroy();
         return true;
-
     }
 
 
-    public function getById($id){
+    public function getById($id)
+    {
         try {
             $query = "SELECT id, username, email, full_name, phone, role, created_at FROM users WHERE id = :id";
             $stmt = $this->conn->prepare($query);
@@ -128,13 +138,14 @@ class User
             $stmt->execute();
             return $stmt->fetch();
         } catch (PDOException $th) {
-           error_log("Get user error: " . $th->getMessage());
-           return false;
+            error_log("Get user error: " . $th->getMessage());
+            return false;
         }
     }
 
     // get all users
-    public function getAll($limit = 50, $offset = 0){
+    public function getAll($limit = 50, $offset = 0)
+    {
         try {
             $query = "SELECT id, username, email, full_name, phone, role, created_at FROM users ORDER BY created_at DESC LIMIT :limit OFFSET :offset";
 
@@ -143,7 +154,6 @@ class User
             $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt->fetchAll();
-
         } catch (PDOException $th) {
             error_log("Get users error: " . $th->getMessage());
             return [];
@@ -152,14 +162,15 @@ class User
 
     // update user profile
 
-    public function update($id, $data){
+    public function update($id, $data)
+    {
         try {
             $query = "UPDATE users SET full_name = :full_name, email = :email, phone = :phone ";
 
             // only update password if provided
-            if(!empty($data['password'])){
+            if (!empty($data['password'])) {
                 // if password is fille or present for updating, then add it to the query to update.
-                $query .= ", password = :passoword";
+                $query .= ", password = :password";
             }
 
             $query .= " WHERE id = :id";
@@ -175,10 +186,6 @@ class User
             }
 
             return $stmt->execute();
-
-            
-
-
         } catch (PDOException $th) {
             error_log("Update user error: " . $th->getMessage());
             return false;
@@ -186,21 +193,23 @@ class User
     }
 
     // delete user
-    public function delete($id){
+    public function delete($id)
+    {
         try {
             $query = "DELETE FROM users WHERE id = :id";
             $stmt = $this->conn->prepare($query);
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             return $stmt->execute();
         } catch (PDOException $th) {
-            error_log('Delete user error: '. $th->getMessage());
+            error_log('Delete user error: ' . $th->getMessage());
             return false;
         }
     }
 
     // change user role (only Admin can)
 
-    public function changeRole($id, $role){
+    public function changeRole($id, $role)
+    {
         try {
             $query = "UPDATE users SET role = :role WHERE id = :id";
             $stmt = $this->conn->prepare($query);
@@ -214,7 +223,8 @@ class User
     }
 
     // count total users
-    public function total(){
+    public function total()
+    {
         try {
             $query = "SELECT COUNT(*) as total FROM users";
             $stmt = $this->conn->prepare($query);
@@ -225,5 +235,13 @@ class User
             error_log("Count users error: " . $th->getMessage());
             return 0;
         }
+    }
+
+    // function to show errors in the browser
+    private function debug_log($message)
+    {
+        echo "<pre style='color: red; background: #fff0f0; border: 1px solid red; padding: 10px;'>";
+        print_r($message);
+        echo "</pre>";
     }
 }

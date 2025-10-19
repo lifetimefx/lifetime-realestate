@@ -1,16 +1,21 @@
+<?php 
+session_start();
+require_once 'config/database.php';
+require_once 'classes/User.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>lifetime - Real estate</title>
-    <link rel="stylesheet" href="assets/style.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
     <link
       href="https://fonts.googleapis.com/css?family=Nunito:200,300,regular,500,600,700,800,900,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic"
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="assets/media.css" />
+    <link rel="stylesheet" href="assets/css/media.css" />
 
     <link
       rel="stylesheet"
@@ -32,6 +37,9 @@
 
         <div class="buttons">
           <a href="">Login</a>
+            <a href="<?php $user = new User();
+            $user->logout(); echo BASE_URL . '/login.php';
+            ?>">Logout</a>
           <a href="">Register</a>
         </div>
 
