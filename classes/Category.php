@@ -6,7 +6,7 @@ class Category
 {
     private $conn;
 
-    private function __construct()
+    public function __construct()
     {
         $this->conn = Database::getConnection();
     }
