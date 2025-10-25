@@ -1,0 +1,56 @@
+lifetime-realestate/
+│
+├── assets/
+│   ├── css/
+│   │   ├── style.css
+│   │   ├── media.css
+│   │   └── admin.css
+│   ├── js/
+│   │   ├── main.js
+│   │   └── admin.js
+│   └── uploads/
+│       └── properties/
+│
+├── config/
+│   ├── database.php
+│   └── config.php
+│
+├── classes/
+│   ├── Database.php
+│   ├── Property.php
+│   ├── User.php
+│   ├── Category.php
+│   └── Favorite.php
+│
+├── includes/
+│   ├── header.php
+│   ├── footer.php
+│   └── functions.php
+│
+├── admin/
+│   ├── index.php
+│   ├── login.php
+│   ├── dashboard.php
+│   ├── properties/
+│   │   ├── add.php
+│   │   ├── edit.php
+│   │   ├── delete.php
+│   │   └── list.php
+│   ├── categories/
+│   │   ├── manage.php
+│   │   └── add.php
+│   └── users/
+│       └── manage.php
+│
+├── img/
+│   └── (your images)
+│
+├── index.php
+├── properties.php
+├── property-detail.php
+├── login.php
+├── register.php
+├── search.php
+└── README.md
+
+
